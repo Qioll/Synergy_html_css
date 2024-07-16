@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting App</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'greetings/styles.css' %}">
+</head>
+<body>
+    <h1>Enter your name</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+        {% if form.errors %}
+        <div class="error">
+            <p>{{ form.errors.name }}</p>
+        </div>
+        {% endif %}
+    </form>
+</body>
+</html>
